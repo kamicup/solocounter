@@ -5,7 +5,7 @@ import (
 	"encoding/binary"
 	"encoding/json"
 	"fmt"
-	"github.com/garyburd/redigo/redis"
+	"github.com/kamicup/solocounter/Godeps/_workspace/src/github.com/garyburd/redigo/redis"
 	"log"
 	"net/http"
 	"strconv"
