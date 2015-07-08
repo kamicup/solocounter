@@ -9,7 +9,7 @@
         var defaults = {
             interval : 60,
             path : 'ping',
-            server : 'http://now.conovare.com/'
+            server : 'https://ancient-savannah-2334.herokuapp.com/'
         };
         var setting = $.extend(defaults, options);
 
@@ -28,7 +28,7 @@
                 }
             });
 
-            setTimeout(ping, setting.interval * 1000)
+            setTimeout(ping, setting.interval * 1000);
         })();
 
         return (this);
