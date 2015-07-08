@@ -7,8 +7,8 @@ import (
 	"log"
 	"net/http"
 	_ "net/http/pprof"
+	"os"
 	"runtime"
-	"strconv"
 	"time"
 )
 
@@ -35,7 +35,6 @@ import (
  */
 func main() {
 	var (
-		port       int
 		window     int
 		interval   int
 		parallel   bool
@@ -45,7 +44,6 @@ func main() {
 		redis_node string
 		verbose    bool
 	)
-	flag.IntVar(&port, "port", 8000, "Port number to listen")
 	flag.IntVar(&window, "time-window", 1, "Time window [min]")
 	flag.IntVar(&interval, "interval", 1, "Cleanup interval [sec]")
 	flag.BoolVar(&parallel, "parallel", false, "Parallel cleanup mode")
@@ -55,6 +53,11 @@ func main() {
 	flag.StringVar(&redis_node, "redis-node", "", "Redis node-name")
 	flag.BoolVar(&verbose, "v", false, "Show verbose log")
 	flag.Parse()
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		log.Fatal("$PORT not set")
+	}
 
 	storage := NewStorage(time.Second*time.Duration(interval), time.Minute*time.Duration(window))
 	storage.Verbose = verbose
@@ -90,5 +93,5 @@ func main() {
 		runtime.GC()
 	})
 
-	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(port), nil))
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
