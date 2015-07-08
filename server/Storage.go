@@ -1,4 +1,4 @@
-package solocounter
+package server
 
 import (
 	"crypto/rand"
@@ -187,16 +187,16 @@ func (s *Storage) Push(path string, address string) int {
 	}
 
 	numClients := s.get(path).add(address, utime)
-//
-//	go func() {
-//		<-time.After(s.window)
-//		if s.get(path).delete(address, utime) == 0 {
-//			s.m.Lock()
-//			defer s.m.Unlock()
-//
-//			delete(s.s, path)
-//		}
-//	}()
+	//
+	//	go func() {
+	//		<-time.After(s.window)
+	//		if s.get(path).delete(address, utime) == 0 {
+	//			s.m.Lock()
+	//			defer s.m.Unlock()
+	//
+	//			delete(s.s, path)
+	//		}
+	//	}()
 
 	return numClients
 }

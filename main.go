@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	. "github.com/kamicup/solocounter/server"
+	"github.com/kamicup/solocounter/server"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
@@ -21,7 +21,7 @@ import (
  * $ GOOS=windows GOARCH=amd64 go build -o solocounter.windows.amd64
  *
  * Usage:
- * $ solocounter -port=80 -time-window=5 -interval=10
+ * $ PORT=80 solocounter -time-window=5 -interval=10
  *
  * Check service status:
  * $ curl http://localhost:80/_stats/
@@ -59,7 +59,7 @@ func main() {
 		log.Fatal("$PORT not set")
 	}
 
-	storage := NewStorage(time.Second*time.Duration(interval), time.Minute*time.Duration(window))
+	storage := server.NewStorage(time.Second*time.Duration(interval), time.Minute*time.Duration(window))
 	storage.Verbose = verbose
 	storage.Clean(parallel)
 

@@ -1,4 +1,4 @@
-package solocounter
+package server
 
 type RedisEntry struct {
 	Node    string
