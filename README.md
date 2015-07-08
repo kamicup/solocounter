@@ -25,10 +25,11 @@
         - ```ab -c 100 -n 10000``` したら **8500 req/sec** ぐらい。
         - 分散処理モード（Redis 使う場合）では 6000 req/sec ぐらいになる。（単独モードの 70% ぐらいか。）
     - **Heroku** （フリーアカウント）にて
-        - デプロイ先は https://solocounter.herokuapp.com/ になった。
+        - デプロイ先は https://solocounter.herokuapp.com/
         - ```git push heroku master``` すると go 1.3.3 でビルドされた。
         - ```ab -c 10 -n 1000``` したら **13 req/sec** 前後。
-        - ```ab -c 100 -n 10000``` で接続先を https じゃなく http で試したら、だいたい 260 req/sec ぐらい。
+        - ```ab -c 100 -n 10000``` で接続先を https じゃなく http で試したら、だいたい **260 req/sec** ぐらい。
+        - ```ab -c 1000 -n 10000``` なら **1600 req/sec** ぐらい。
 - こういうの動かすなら
     - ディスクアクセスは**しない**ので I/O 性能はほとんど気にしなくて良い。
     - マルチコアなマシンなら環境変数に GOMAXPROCS=8 とかしつつ -parallel オプション付きで起動するとより良いかもしれない。
