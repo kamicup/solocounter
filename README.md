@@ -25,9 +25,8 @@
         - ```ab -c 100 -n 10000``` したら **8500 req/sec** ぐらい。
         - 分散処理モード（Redis 使う場合）では 6000 req/sec ぐらいになる。（単独モードの 70% ぐらいか。）
     - **Heroku** （フリーアカウント）にて
-        - ```git push heroku master``` すると、
-            - go 1.3.3 でビルドされた。
-            - デプロイ先は https://ancient-savannah-2334.herokuapp.com/ になった。
+        - デプロイ先は https://solocounter.herokuapp.com/ になった。
+        - ```git push heroku master``` すると go 1.3.3 でビルドされた。
         - ```ab -c 10 -n 1000``` したら **13 req/sec** 前後。
         - ```ab -c 100 -n 10000``` で接続先を https じゃなく http で試したら、だいたい 260 req/sec ぐらい。
 - こういうの動かすなら

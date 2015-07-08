@@ -9,7 +9,7 @@
         var defaults = {
             interval : 60,
             path : 'ping',
-            server : 'https://ancient-savannah-2334.herokuapp.com/'
+            server : 'http://solocounter.herokuapp.com/'
         };
         var setting = $.extend(defaults, options);
 
